@@ -1,4 +1,4 @@
-import { Flex, Box, Wrap, Button, FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, VStack, StackDivider, AbsoluteCenter } from "@chakra-ui/react";
+import { Flex, Button, Formik } from "@chakra-ui/react";
 import React, { useState, useContext } from "react";
 import { CartContext } from "../context";
 import { db } from "../firebase";
@@ -73,54 +73,34 @@ export const Payment = () => {
   };
 
   return (
-
-    /*<FormControl>
+    <FormControl isRequired>
       <FormLabel> First Name</FormLabel>
-      <input placeholder="First name" />
-    </FormControl>*/
+      <Input placeholder="First name"/>
+    </FormControl>
 
 
-    <Flex mt="20" ml="10" direction="column" align="center">
-      
-        <VStack
-          /*divider={<StackDivider borderColor="gray.200"/>}*/
-          spacing={6}
-          alignContent="center"
-        >
-          <FormControl isRequired>
-            <FormLabel> First Name </FormLabel>
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel> Last Name </FormLabel>
-            <input
-              type="text"
-              placeholder="Last Name"
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </FormControl>
+    /*<Flex mt="20" ml="10">
+      <input
+        type="text"
+        placeholder="Name"
+        onChange={(e) => setName(e.target.value)}
+      />
 
-          <FormControl isRequired>
-            <FormLabel>e-mail </FormLabel>
-            <input
-              type="email"
-              placeholder="e-mail"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </FormControl>
+      <input
+        type="text"
+        placeholder="Last Name"
+        onChange={(e) => setLastName(e.target.value)}
+      />
 
-          <Button colorScheme="blue" size="lg" onClick={handleCreateOrder}>
-            Submitt Order
-          </Button>
-
-        </VStack>
-
-
-    </Flex>
+      <input
+        type="email"
+        placeholder="e-mail"
+        onChange={(e) => setEmail(e.target.value)}
+      />
+        <Button colorScheme="blue" size="lg" onClick={handleCreateOrder}>
+          Submitt Order
+        </Button>
+    </Flex>*/
   );
 };

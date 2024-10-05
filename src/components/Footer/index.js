@@ -1,0 +1,1 @@
+export * from './Footer'; // exporta todo lo que se exporta en NavBar

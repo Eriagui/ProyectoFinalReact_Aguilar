@@ -1,39 +1,38 @@
 import { useState, useContext } from "react";
 import {
-  Box,
-  Container,
   Stack,
   Text,
   Image,
-  Flex,
-  VStack,
   Button,
   Heading,
-  SimpleGrid,
-  StackDivider,
   useColorModeValue,
+  Card,
+  CardFooter,
+  CardBody,
+  Divider,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { CartContext } from "../../context/CartContext";
-import { SkeletonItem } from "../SkeletonItem";
+import { Link } from "react-router-dom";
+
 export const ItemDetailContainer = ({ product }) => {
   const [showCount, setShowCount] = useState(false);
+  const [showButton, setShowButton] = useState(true);
   const [count, setCount] = useState(0);
 
   const { addItem, removeItem } = useContext(CartContext);
 
   const handleShowCount = () => {
     setShowCount(!showCount);
+    setShowButton(!showButton);
+    handleIncrement();
   };
 
   const handleIncrement = () => {
-    /*if (count < product.stock) {
-      const newCount = count + 1;
-      setCount(newCount);
-      addItem(product, newCount);
-    }*/
     const newCount = count + 1;
-      setCount(newCount);
-      addItem(product, newCount);
+    setCount(newCount);
+    addItem(product, newCount);
   };
 
   const handleDecrement = () => {
@@ -44,173 +43,74 @@ export const ItemDetailContainer = ({ product }) => {
     }
   };
 
-  // return loading ? <SkeletonItem /> : (
-  //   <Container maxW={"7xl"}>
-  //     <SimpleGrid
-  //       columns={{ base: 1, lg: 2 }}
-  //       spacing={{ base: 8, md: 10 }}
-  //       py={{ base: 18, md: 24 }}
-  //     >
-  //       <Flex>
-  //         <Image
-  //           rounded={"md"}
-  //           alt={"product image"}
-  //           src={product.thumbnail}
-  //           fit={"cover"}
-  //           align={"center"}
-  //           w={"100%"}
-  //           h={{ base: "100%", sm: "400px", lg: "500px" }}
-  //         />
-  //       </Flex>
-  //       <Stack spacing={{ base: 6, md: 10 }}>
-  //         <Box as={"header"}>
-  //           <Heading
-  //             lineHeight={1.1}
-  //             fontWeight={600}
-  //             fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-  //           >
-  //             {product.title}
-  //           </Heading>
-  //           <Text
-  //             color={useColorModeValue("gray.900", "gray.400")}
-  //             fontWeight={300}
-  //             fontSize={"2xl"}
-  //           >
-  //             ${product.price} USD
-  //           </Text>
-  //         </Box>
-
-  //         <Stack
-  //           spacing={{ base: 4, sm: 6 }}
-  //           direction={"column"}
-  //           divider={
-  //             <StackDivider
-  //               borderColor={useColorModeValue("gray.200", "gray.600")}
-  //             />
-  //           }
-  //         >
-  //           <VStack spacing={{ base: 4, sm: 6 }}>
-  //             <Text
-  //               color={useColorModeValue("gray.500", "gray.400")}
-  //               fontSize={"2xl"}
-  //               fontWeight={"300"}
-  //             >
-  //               {product.description}
-  //             </Text>
-  //           </VStack>
-  //         </Stack>
-
-  //         <Button
-  //           rounded={"none"}
-  //           w={"full"}
-  //           mt={8}
-  //           size={"lg"}
-  //           py={"7"}
-  //           bg={useColorModeValue("gray.900", "gray.50")}
-  //           color={useColorModeValue("white", "gray.900")}
-  //           textTransform={"uppercase"}
-  //           _hover={{
-  //             transform: "translateY(2px)",
-  //             boxShadow: "lg",
-  //           }}
-  //           onClick={handleShowCount}
-  //         >
-  //           Agregar al carrito
-  //         </Button>
-  //         {showCount && (
-  //           <Stack direction="row" spacing={4} align="center" mt={4}>
-  //             <Button onClick={handleDecrement}>-</Button>
-  //             <Text fontSize="lg">{count}</Text>
-  //             <Button onClick={handleIncrement}>+</Button>
-  //           </Stack>
-  //         )}
-  //       </Stack>
-  //     </SimpleGrid>
-  //   </Container>
-  // );
   return (
-    <Container maxW={"7xl"}>
-      <SimpleGrid
-        columns={{ base: 1, lg: 2 }}
-        spacing={{ base: 8, md: 10 }}
-        py={{ base: 18, md: 24 }}
-      >
-        <Flex>
-          <Image
-            rounded={"md"}
-            alt={"product image"}
-            /*src={product.thumbnail}*/
-            src={product.image}
-            fit={"cover"}
-            align={"center"}
-            w={"100%"}
-            h={{ base: "100%", sm: "400px", lg: "500px" }}
-          />
-        </Flex>
-        <Stack spacing={{ base: 6, md: 10 }}>
-          <Box as={"header"}>
-            <Heading
-              lineHeight={1.1}
-              fontWeight={600}
-              fontSize={{ base: "2xl", sm: "4xl", lg: "5xl" }}
-            >
-              {product.title}
-            </Heading>
-            <Text
-              color={useColorModeValue("gray.900", "gray.400")}
-              fontWeight={300}
-              fontSize={"2xl"}
-            >
-              $ {product.price} USD
-            </Text>
-          </Box>
+    <Card
+      direction={{ base: 'column', sm: 'row' }}
+      overflow='hidden'
+      variant='outline'
+      mt="10"
+      mb="30%"
+    >
+      <Image
+        objectFit='scale-down'
+        maxW={{ base: '100%', sm: '30%' }}
+        src={product.image}
+        alt={product.title}
+      />
 
-          <Stack
-            spacing={{ base: 4, sm: 6 }}
-            direction={"column"}
-            divider={
-              <StackDivider
-                borderColor={useColorModeValue("gray.200", "gray.600")}
-              />
-            }
-          >
-            <VStack spacing={{ base: 4, sm: 6 }}>
-              <Text
-                color={useColorModeValue("gray.500", "gray.400")}
-                fontSize={"2xl"}
-                fontWeight={"300"}
-              >
-                {product.description}
-              </Text>
-            </VStack>
-          </Stack>
+      <Stack>
+        <CardBody>
+          <Heading size='md'>{product.title}</Heading>
 
-          <Button
-            rounded={"none"}
-            w={"full"}
-            mt={8}
-            size={"lg"}
-            py={"7"}
-            bg={useColorModeValue("gray.900", "gray.50")}
-            color={useColorModeValue("white", "gray.900")}
-            textTransform={"uppercase"}
-            _hover={{
-              transform: "translateY(2px)",
-              boxShadow: "lg",
-            }}
-            onClick={handleShowCount}
-          >
-            Agregar al carrito
-          </Button>
-          {showCount && (
-            <Stack direction="row" spacing={4} align="center" mt={4}>
-              <Button onClick={handleDecrement}>-</Button>
-              <Text fontSize="lg">{count}</Text>
-              <Button onClick={handleIncrement}>+</Button>
-            </Stack>
-          )}
-        </Stack>
-      </SimpleGrid>
-    </Container>
+          <Text py='2'>
+            {product.description}
+          </Text>
+
+          <Text>Brand: {product.brand}</Text>
+          <Text>Color: {product.color}</Text>
+          <Text>Model: {product.model}</Text>
+          <Text color="blue.600" fontSize="2xl">
+            $ {product.price} USD
+          </Text>
+        </CardBody>
+        <Divider />
+        <CardFooter>
+          <Wrap justify="center">
+            <WrapItem>
+              {showButton && (
+                <Button variant='solid' colorScheme='blue' onClick={handleShowCount}>
+                  Add to cart
+                </Button>
+              )}
+              {showCount && (
+                <Stack direction="row" spacing={4} align="center" ml={4}>
+                  <Button onClick={handleDecrement}>-</Button>
+                  <Text fontSize="lg">{count}</Text>
+                  <Button onClick={handleIncrement}>+</Button>
+                </Stack>
+              )}
+            </WrapItem>
+
+            <WrapItem>
+              <Link to="/">
+                <Button variant='solid' colorScheme='blue' ml={4}>
+                  Continue shopping
+                </Button>
+              </Link>
+            </WrapItem>
+
+            <WrapItem>
+              <Link to="/checkout">
+                <Button variant='solid' colorScheme='blue' ml={4}>
+                  Go to cart
+                </Button>
+              </Link>
+            </WrapItem>
+
+
+          </Wrap>
+        </CardFooter>
+      </Stack>
+    </Card>
   );
 };

@@ -26,7 +26,7 @@ export const NavBar = () => {
 
   return (
     <>
-      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
+      <Box bg={useColorModeValue("gray.100", "gray.900")} px={4} position={"fixed"} top={"0"} left={"0"} zIndex={1} w={"100%"}>
         <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <Link to="/"><strong>Erick's Store</strong></Link>
@@ -58,7 +58,7 @@ export const NavBar = () => {
                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}
               </Button>
 
-              <Menu>
+              {/*<Menu>
                 <MenuButton
                   as={Button}
                   rounded={"full"}
@@ -66,7 +66,7 @@ export const NavBar = () => {
                   cursor={"pointer"}
                   minW={0}
                 >
-                  <Avatar
+                <Avatar
                     size={"sm"}
                     src={"https://avatars.dicebear.com/api/male/username.svg"}
                   />
@@ -89,7 +89,7 @@ export const NavBar = () => {
                   <MenuItem>Account Settings</MenuItem>
                   <MenuItem>Logout</MenuItem>
                 </MenuList>
-              </Menu>
+              </Menu>*/}
             </Stack>
           </Flex>
         </Flex>

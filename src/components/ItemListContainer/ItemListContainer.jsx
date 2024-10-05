@@ -18,7 +18,7 @@ export const ItemListContainer = ({ products }) => {
   // const uniqueCategories = [...new Set(categories)];
   // console.log(uniqueCategories)
   return (
-    <Box display={"flex"} flexWrap={"wrap"}>
+    <Box display={"flex"} flexWrap={"wrap"} mt="10" mb="20%">
       {products.map((product) => (
         <Card key={product.id} maxW="sm" margin={"1rem"}>
           <CardBody>

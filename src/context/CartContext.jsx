@@ -18,7 +18,8 @@ export const CartProvider = ({ children }) => {
       setCartState(
         cartState.map((item) =>
           item.id === product.id
-            ? { ...item, qtyItem: item.qtyItem + 1 } // Aquí solo sumamos 1 a la cantidad existente
+            ? { ...item, qtyItem: item.qtyItem + 1 } // Aquí solo sumamos 1 a la cantidad existente. 
+            // El spread operator... expande el arreglo o cualquier iterable en sus elementos
             : item
         )
       );
@@ -53,7 +54,7 @@ export const CartProvider = ({ children }) => {
 
   return (
     <CartContext.Provider
-      value={{ cartState, addItem, removeItem, deleteItem }}
+      value={{ cartState, setCartState, addItem, removeItem, deleteItem }}
     >
       {children}
     </CartContext.Provider>
