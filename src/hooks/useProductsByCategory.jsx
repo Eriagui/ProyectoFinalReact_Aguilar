@@ -19,7 +19,11 @@ export const useProductsByCategory = (id) => {
         );
       })
       .catch(() => setError(true))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false)
+        }, 1);
+      });
   }, [id]);
 
   return { products, loading };

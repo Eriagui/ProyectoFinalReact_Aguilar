@@ -14,6 +14,7 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { CartContext } from "../../context/CartContext";
+import { SkeletonItemDetail } from "../SkeletonItemDetail";
 import { Link } from "react-router-dom";
 
 export const ItemDetailContainer = ({ product }) => {

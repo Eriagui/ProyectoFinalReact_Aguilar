@@ -2,7 +2,7 @@ import React from "react";
 import { useParams } from "react-router";
 import { ItemListContainer } from "../components";
 import { useProductsByCategory } from "../hooks";
-import { Spinner } from "@chakra-ui/react";
+import { SkeletonItem } from "../components/SkeletonItem";
 
 export const Category = () => {
   const { categoryId } = useParams();
@@ -10,7 +10,7 @@ export const Category = () => {
   const { products, loading } = useProductsByCategory(categoryId);
 
   if (loading) {
-    return <Spinner />;
+    return <SkeletonItem />;
   } else {
     return <ItemListContainer products={products} />;
   }

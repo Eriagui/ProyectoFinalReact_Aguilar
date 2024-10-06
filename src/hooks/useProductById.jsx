@@ -15,7 +15,11 @@ export const useProductById = (id) => {
       .catch((error) => {
         console.log(error);
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setTimeout(() => {
+          setLoading(false)
+        }, 1);
+      });
   }, []);
 
   return { product, loading };
