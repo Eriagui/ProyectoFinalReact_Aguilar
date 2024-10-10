@@ -7,7 +7,7 @@ import { Footer } from "./components/Footer";
 function App() {
   return (
     <ChakraProvider>
-      <CartProvider> {/*Para el use context*/} 
+      <CartProvider> {/*Para el useContext*/}
         <MainRouter />
       </CartProvider>
       <Footer />

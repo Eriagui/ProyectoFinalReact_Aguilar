@@ -23,14 +23,12 @@ export const ItemListContainer = ({ products }) => {
         <Card key={product.id} maxW="sm" margin={"1rem"}>
           <CardBody>
             <Image
-              /*src={product.thumbnail}*/
               src={product.image}
               alt={product.name}
               borderRadius="lg"
             />
             <Stack mt="6" spacing="3">
               <Heading size="md">{product.title}</Heading>
-              {/*<Text>{product.description}</Text>*/}
               <Text>{product.category}</Text>
               <Text color="blue.600" fontSize="2xl">
                 $ {product.price} USD
@@ -40,12 +38,8 @@ export const ItemListContainer = ({ products }) => {
           <Divider />
           <CardFooter>
             <ButtonGroup spacing="2">
-              {/* <Button variant="ghost" colorScheme="blue">
-                Add to cart
-              </Button> */}
               <Link to={`/item/${product.id}`}>
-                {" "}
-                See more...{" "}
+                See more...
               </Link>
             </ButtonGroup>
           </CardFooter>

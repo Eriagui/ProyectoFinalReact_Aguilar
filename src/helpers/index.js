@@ -1,3 +1,7 @@
+// Archivo creado para añadir los productos a Firebase.  
+// Sólo se ocupa por el administrador para cargar los productos a la base de datos
+// Función y botón no disponibles para el usuario
+
 import { getAllProducts } from "../services/products.service";
 
 import { db } from "./../firebase";

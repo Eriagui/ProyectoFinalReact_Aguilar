@@ -16,8 +16,10 @@ Descargar el proyecto
 ## Ingresar a 
 > http://localhost:5173
 
-##Autor
+##Profesor
 
 - [Daniel Alanis](https://github.com/danielalejandroalanis)
 
+##Alumno
 
+- [Erick Aguilar](https://github.com/Eriagui/ProyectoFinalReact_Aguilar)

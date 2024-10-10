@@ -1,4 +1,4 @@
-import { Flex, Box, Wrap, Button, FormControl, FormLabel, FormErrorMessage, FormHelperText, Input, VStack, StackDivider, AbsoluteCenter } from "@chakra-ui/react";
+import { Flex, Button, FormControl, FormLabel, VStack } from "@chakra-ui/react";
 import React, { useState, useContext } from "react";
 import { CartContext } from "../context";
 import { db } from "../firebase";
@@ -9,8 +9,8 @@ export const Payment = () => {
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const { cartState } = useContext(CartContext);
-  const { setCartState } = useContext(CartContext);
+  const { cartState, setCartState } = useContext(CartContext);
+  /*const { setCartState } = useContext(CartContext);*/
   const total = cartState.reduce(
     (acc, item) => acc + item.price * item.qtyItem,
     0
@@ -32,7 +32,7 @@ export const Payment = () => {
       alert("Please provide an email")
       pass = false;
     }
-    console.log(cartState);
+
     if (cartState.length == 0) {
       alert("Please add items to your cart")
       pass = false;
@@ -74,52 +74,44 @@ export const Payment = () => {
 
   return (
 
-    /*<FormControl>
-      <FormLabel> First Name</FormLabel>
-      <input placeholder="First name" />
-    </FormControl>*/
+    <Flex mt="20" ml="10" direction="column" align="center" mb="40">
 
+      <VStack
+        spacing={6}
+        alignContent="center"
+      >
+        <FormControl isRequired>
+          <FormLabel> First Name </FormLabel>
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+          />
+        </FormControl>
 
-    <Flex mt="20" ml="10" direction="column" align="center">
-      
-        <VStack
-          /*divider={<StackDivider borderColor="gray.200"/>}*/
-          spacing={6}
-          alignContent="center"
-        >
-          <FormControl isRequired>
-            <FormLabel> First Name </FormLabel>
-            <input
-              type="text"
-              placeholder="Name"
-              onChange={(e) => setName(e.target.value)}
-            />
-          </FormControl>
+        <FormControl isRequired>
+          <FormLabel> Last Name </FormLabel>
+          <input
+            type="text"
+            placeholder="Last Name"
+            onChange={(e) => setLastName(e.target.value)}
+          />
+        </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel> Last Name </FormLabel>
-            <input
-              type="text"
-              placeholder="Last Name"
-              onChange={(e) => setLastName(e.target.value)}
-            />
-          </FormControl>
+        <FormControl isRequired>
+          <FormLabel>e-mail </FormLabel>
+          <input
+            type="email"
+            placeholder="e-mail"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel>e-mail </FormLabel>
-            <input
-              type="email"
-              placeholder="e-mail"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </FormControl>
+        <Button colorScheme="blue" size="lg" onClick={handleCreateOrder}>
+          Submitt Order
+        </Button>
 
-          <Button colorScheme="blue" size="lg" onClick={handleCreateOrder}>
-            Submitt Order
-          </Button>
-
-        </VStack>
-
+      </VStack>
 
     </Flex>
   );

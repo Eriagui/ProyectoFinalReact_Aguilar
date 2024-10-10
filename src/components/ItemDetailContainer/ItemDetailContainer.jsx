@@ -5,7 +5,6 @@ import {
   Image,
   Button,
   Heading,
-  useColorModeValue,
   Card,
   CardFooter,
   CardBody,
@@ -14,13 +13,12 @@ import {
   WrapItem,
 } from "@chakra-ui/react";
 import { CartContext } from "../../context/CartContext";
-import { SkeletonItemDetail } from "../SkeletonItemDetail";
 import { Link } from "react-router-dom";
 
 export const ItemDetailContainer = ({ product }) => {
-  const [showCount, setShowCount] = useState(false);
-  const [showButton, setShowButton] = useState(true);
-  const [count, setCount] = useState(0);
+  const [showButton, setShowButton] = useState(true); //De inicio se muestra el botón
+  const [showCount, setShowCount] = useState(false); //De incio no se muestra la opción de incrementar o decrementar
+  const [count, setCount] = useState(0); // Contador a mostrar en medio de los botones + -
 
   const { addItem, removeItem } = useContext(CartContext);
 
@@ -33,7 +31,7 @@ export const ItemDetailContainer = ({ product }) => {
   const handleIncrement = () => {
     const newCount = count + 1;
     setCount(newCount);
-    addItem(product, newCount);
+    addItem(product);
   };
 
   const handleDecrement = () => {
@@ -107,7 +105,6 @@ export const ItemDetailContainer = ({ product }) => {
                 </Button>
               </Link>
             </WrapItem>
-
 
           </Wrap>
         </CardFooter>

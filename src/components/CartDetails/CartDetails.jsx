@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { CartContext } from "../../context";
 import {
   Box,
-  Flex,
   Image,
   Text,
   Button,
@@ -72,7 +71,6 @@ export const CartDetails = () => {
 
               <WrapItem>
                 <Image
-                  /*src={item.thumbnail}*/
                   src={item.image}
                   alt={item.title}
                   boxSize="100px"

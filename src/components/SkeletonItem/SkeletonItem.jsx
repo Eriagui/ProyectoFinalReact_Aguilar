@@ -1,19 +1,18 @@
 import React from "react";
-import { Flex, Skeleton, Stack, Box, Card, CardBody, Image, Heading, Text, Divider, CardFooter, ButtonGroup, HStack, Wrap } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Skeleton, Box, HStack, } from "@chakra-ui/react";
 
 export const SkeletonItem = () => {
   return (
-    <Box display={"flex"} flexWrap={"wrap"} mt="10" mb="20%">
+    <Box display={"flex"} flexWrap={"wrap"} mt="10" mb="20%" ml="1rem">
       <HStack spacing="50px">
-      <Skeleton>
-          <Box width={"400px"} height={"800px"}/>
+        <Skeleton>
+          <Box width={"400px"} height={"800px"} />
         </Skeleton>
         <Skeleton>
-          <Box width={"400px"} height={"800px"}/>
+          <Box width={"400px"} height={"800px"} />
         </Skeleton>
         <Skeleton>
-          <Box width={"400px"} height={"800px"}/>
+          <Box width={"400px"} height={"800px"} />
         </Skeleton>
       </HStack>
     </Box>
